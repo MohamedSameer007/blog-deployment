@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 const CategoryPosts = () => {
     const [posts, setPosts] = useState([]);
-    const [category, setCategory] = useState(null);
+    const [category, setCategory] = useState([]);
     const { id } = useParams();
 
     const API_URL = process.env.REACT_APP_API_URL; // 👈 use env variable
@@ -43,13 +43,14 @@ const CategoryPosts = () => {
                 <div className="container mt-4">
                     <div className="row">
                         <div className="col-lg-8">
-                            <h1 className="mb-4">{category.name}</h1>
-                            {posts.length > 0 ? (
-                                posts.map((post) => <Post key={post._id} post={post} />)
-                            ) : (
-                                <h4>No posts available</h4>
-                            )}
-                        </div>
+  <h1 className="mb-4">{category?.name}</h1>
+  {Array.isArray(posts) && posts.length > 0 ? (
+    posts.map((post) => <Post key={post._id} post={post} />)
+  ) : (
+    <h4>No posts available</h4>
+  )}
+</div>
+
                     </div>
                 </div>
             </main>

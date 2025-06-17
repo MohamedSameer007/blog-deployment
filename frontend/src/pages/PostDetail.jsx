@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const PostDetail = () => {
-  const [post, setPost] = useState(null);
+  const [post, setPost] = useState([]);
   const { id } = useParams();
 
   const API_URL = process.env.REACT_APP_API_URL; // 👈 using env variable
