@@ -2,8 +2,10 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const postRoutes = require('./routes/postRoutes');
-const categoryRoutes = require('./routes/categoryRoutes');
+
+const postRoutes = require('./routes/posts'); // CORRECT ✅
+const categoryRoutes = require('./routes/categories'); // CORRECT ✅
+
 
 const app = express();
 app.use(express.json());
