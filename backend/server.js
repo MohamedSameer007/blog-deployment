@@ -2,14 +2,14 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const postRoutes = require('./routes/postRoutes'); // Example route
-const categoryRoutes = require('./routes/categoryRoutes'); // Example route
+const postRoutes = require('./routes/postRoutes');
+const categoryRoutes = require('./routes/categoryRoutes');
 
 const app = express();
 app.use(express.json());
 
 const corsOptions = {
-  origin: process.env.APPLICATION_URL, // 👈 Frontend URL from env
+  origin: process.env.APPLICATION_URL, // Frontend URL from env
   credentials: true,
 };
 app.use(cors(corsOptions));
@@ -24,10 +24,8 @@ mongoose
 app.use('/api/posts', postRoutes);
 app.use('/api/categories', categoryRoutes);
 
-const PORT = process.env.PORT || 8000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+module.exports = app; // ✅ This is REQUIRED in Vercel (do not use app.listen())
+
 
 
 // const express = require("express");
