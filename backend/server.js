@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const postRoutes = require('./routes/posts')
 const categoryRoutes = require('./routes/categories');
 const cors = require('cors')
+require('dotenv').config();
 
 const app = express();
 
@@ -15,7 +16,7 @@ app.use(cors())
 
 //Connect to MongoDB
 mongoose
-  .connect("mongodb://localhost:27017/blog")
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log("DB error", err));
 
