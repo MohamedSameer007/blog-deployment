@@ -38,7 +38,7 @@ router.get('/:id', async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);
         if (!post) {
-            return res.status(404).json({ message: "Post not found" });
+            return res.status(404).json({ message: "Not able to fetch the post" });
         }
         res.json(post);
     } catch (error) {
